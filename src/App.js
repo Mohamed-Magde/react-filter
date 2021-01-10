@@ -7,10 +7,20 @@ function App() {
   useEffect(() => {
     console.log(list);
   }, []);
+  const addRandom = () => {
+    var text = "";
+    var possible =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 7; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    console.log(text);
+    return text;
+  };
   return (
     <div className="container">
       <input type="text" placeholder="search" name="" id="" />
-      <button>Add Text</button>
+      <button onClick={addRandom}>Add Text</button>
       <div className="text-list">
         {list.map((item) => {
           const { text, id } = item;
