@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import "./App.css";
+import { data } from "./data/data";
 
+let list = [...data];
 function App() {
+  useEffect(() => {
+    console.log(list);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <input type="text" placeholder="search" name="" id="" />
+      <button>Add Text</button>
+      <div className="text-list">
+        {list.map((item) => {
+          const { text, id } = item;
+          return <p key={id}>{text}</p>;
+        })}
+      </div>
     </div>
   );
 }
