@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { data } from "./data/data";
 
-let list = [...data];
 function App() {
+  const [list, setList] = useState([...data]);
   useEffect(() => {
     console.log(list);
-  }, []);
+  }, [list]);
+
   const addRandom = () => {
     var text = "";
     var possible =
@@ -14,8 +15,7 @@ function App() {
 
     for (var i = 0; i < 7; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
-    console.log(text);
-    return text;
+    setList((prev) => [...prev, { id: prev.length + 2, text: text }]);
   };
   return (
     <div className="container">
